@@ -1,18 +1,13 @@
-/*
+/* service that polls dump1090 server and stores the result into a sqlite3 database.  
+   Currently not storing mlat values but intend to in a subsequent version  */
 
-history_n.json
-These files are historical copies of aircraft.json at (by default) 30 second intervals. They follow exactly the same format as aircraft.json. To know how many are valid, see receiver.json ("history" value). They are written in a cycle, with history_0 being overwritten after history_119 is generated, so history_0.json is not necessarily the oldest history entry. To load history, you should:
-
-read "history" from receiver.json.
-load that many history_N.json files
-sort the resulting files by their "now" values
-process the files in order
-
-*/
-
+//++++++++++++++++++++++++++++++++++++++++++
 const POLLING_RATE_MILISECONDS = 1000;
 const AIRCRAFT_SIGHTINGS_SERVER = "192.168.1.72";
 const DATABASE_PATH = "../db/aircraft.db";
+  
+const sqlite3 = require('sqlite3').verbose();                                                                                                                                           
+const db = new sqlite3.Database(DATABASE_PATH);                                                                                                                          
 
 function winnow_insert(sql) {
   // Remove undefined values from insert
@@ -21,6 +16,7 @@ function winnow_insert(sql) {
   return sql;
 }
 
+//++++++++++++++++++++++++++++++++++++++++++
 function insert_sighting(sighting) {
 
   for (let aircraft of sighting.aircraft) {
@@ -99,9 +95,7 @@ function insert_sighting(sighting) {
   //console.log(mess);
 }
     
-const sqlite3 = require('sqlite3').verbose();                                                                                                                                           
-const db = new sqlite3.Database(DATABASE_PATH);                                                                                                                          
-
+//++++++++++++++++++++++++++++++++++++++++++
 function get_all_planes_and_save() {
   const http = require('http');
   var options = {
@@ -132,4 +126,5 @@ function get_all_planes_and_save() {
   });
 }
 
+//++++++++++++++++++++++++++++++++++++++++++
 setInterval(get_all_planes_and_save, POLLING_RATE_MILISECONDS);
