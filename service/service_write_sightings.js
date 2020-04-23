@@ -10,6 +10,9 @@ process the files in order
 
 */
 
+const POLLING_RATE_MILISECONDS = 1000;
+const AIRCRAFT_SIGHTINGS_SERVER = "192.168.1.72";
+
 function winnow_insert(sql) {
   // Remove undefined values from insert
   sql = sql.replace(/undefined/g, 'NULL');
@@ -88,18 +91,13 @@ function insert_sighting(sighting) {
 	insert = winnow_insert(insert);
 
     db.run(insert, function(err){
-  // 
-	});
-    
+      // 
+    });
   }	
 
   //console.log(mess);
 }
     
-
-const AIRCRAFT_SIGHTINGS_SERVER = "192.168.1.72";
-
-
 const sqlite3 = require('sqlite3').verbose();                                                                                                                                           
 const db = new sqlite3.Database('../db/aircraft.db');                                                                                                                          
 
@@ -133,4 +131,4 @@ function get_all_planes_and_save() {
   });
 }
 
-setInterval(get_all_planes_and_save, 1000);
+setInterval(get_all_planes_and_save, POLLING_RATE_MILISECONDS);
