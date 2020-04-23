@@ -12,6 +12,7 @@ process the files in order
 
 const POLLING_RATE_MILISECONDS = 1000;
 const AIRCRAFT_SIGHTINGS_SERVER = "192.168.1.72";
+const DATABASE_PATH = "../db/aircraft.db";
 
 function winnow_insert(sql) {
   // Remove undefined values from insert
@@ -99,7 +100,7 @@ function insert_sighting(sighting) {
 }
     
 const sqlite3 = require('sqlite3').verbose();                                                                                                                                           
-const db = new sqlite3.Database('../db/aircraft.db');                                                                                                                          
+const db = new sqlite3.Database(DATABASE_PATH);                                                                                                                          
 
 function get_all_planes_and_save() {
   const http = require('http');
