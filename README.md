@@ -1,6 +1,8 @@
-# adsb-logger
+# adsb-logger 0.1a
 
 This is a single program that runs in an infinite loop, recording data from a dump1090 adsb source.  The source may or may not be on the same computer and is referenced by its IP address.
+
+Possible issues: This code may need to be optimized to ensure all sightings are being recorded.  It currently runs every second and does NOT consider the history_n files.
 
 INSTALLATION
 
