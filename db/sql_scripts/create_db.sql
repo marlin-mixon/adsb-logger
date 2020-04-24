@@ -38,8 +38,8 @@ CREATE TABLE sighting (
 
 INSERT INTO sighting ( 
   hex,
+  now,
   flight,
-  now, 
   alt_baro, 
   alt_geom, 
   gs, 
@@ -70,8 +70,8 @@ INSERT INTO sighting (
   rssi 	
 ) values (
   'abe77a',
-  'UA 52',
   1587586145.2,
+  'UA 52',
   3650,
   3650,
   280.5,
