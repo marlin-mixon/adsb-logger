@@ -142,4 +142,4 @@ function get_all_planes_and_save() {
 }
 
 //++++++++++++++++++++++++++++++++++++++++++
-setInterval(get_all_planes_and_save, POLLING_RATE_MILISECONDS);
+setInterval(get_all_planes_and_save, POLLING_RATE_MILISECONDS);  // Infinite loop
