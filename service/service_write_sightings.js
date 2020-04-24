@@ -7,7 +7,10 @@ const AIRCRAFT_SIGHTINGS_SERVER = "192.168.1.72";
 const DATABASE_PATH = "../db/aircraft.db";
   
 const sqlite3 = require('sqlite3').verbose();                                                                                                                                           
-const db = new sqlite3.Database(DATABASE_PATH);                                                                                                                          
+const db = new sqlite3.Database(DATABASE_PATH); 
+const fs = require('fs') 
+
+const debug = {"log_http" : false};  // http logging turned off
 
 function winnow_insert(sql) {
   // Remove undefined values from insert
@@ -118,6 +121,15 @@ function get_all_planes_and_save() {
       var body = Buffer.concat(bodyChunks);
       // ...and/or process the entire body here.
       var sighting = JSON.parse(body);
+	    
+      if (debug.log_http) {
+        fs.writeFile('debug_log.js', sighting, err => {
+	  if (err) {
+	    console.error(err);
+	    return;
+	  }
+	} 
+      }
 
       insert_sighting(sighting);  
     })
