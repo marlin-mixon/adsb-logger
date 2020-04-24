@@ -4,6 +4,7 @@ CREATE DATABASE aircraft.db;
 CREATE TABLE sighting (
   id integer primary key, 
   now float NOT NULL,
+  flight text,
   hex text NOT NULL, 
   alt_baro integer, 
   alt_geom integer, 
@@ -37,6 +38,7 @@ CREATE TABLE sighting (
 
 INSERT INTO sighting ( 
   hex,
+  flight,
   now, 
   alt_baro, 
   alt_geom, 
@@ -68,6 +70,7 @@ INSERT INTO sighting (
   rssi 	
 ) values (
   'abe77a',
+  'UA 52',
   1587586145.2,
   3650,
   3650,
