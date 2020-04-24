@@ -23,6 +23,7 @@ function insert_sighting(sighting) {
 
     let insert = `INSERT INTO sighting ( 
 	  hex,
+          flight,
 	  now, 
 	  alt_baro, 
 	  alt_geom, 
@@ -54,6 +55,7 @@ function insert_sighting(sighting) {
 	  rssi 	
 	) VALUES (
 	  '${aircraft.hex}',
+          '${aircraft.flight}',
 	  ${sighting.now},
 	  ${aircraft.alt_baro}, 
 	  ${aircraft.alt_geom}, 
