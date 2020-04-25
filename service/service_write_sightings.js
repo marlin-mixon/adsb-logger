@@ -1,5 +1,4 @@
-/* service that polls dump1090 server and stores the result into a sqlite3 database.  
-   Currently not storing mlat values but intend to in a subsequent version  */
+/* service that polls dump1090 server and stores the result into a sqlite3 database.  */
 
 //++++++++++++++++++++++++++++++++++++++++++
 const POLLING_RATE_MILISECONDS = 1000;
@@ -83,8 +82,8 @@ function insert_sighting(sighting) {
       '${aircraft.sil_type}', 
       ${aircraft.gva}, 
       ${aircraft.sda}, 
-      NULL, 
-      NULL, 
+      '${JSON.stringify(aircraft.mlat)}', 
+      '${JSON.stringify(aircraft.tisb)}', 
       ${aircraft.messages}, 
       ${aircraft.seen}, 
       ${aircraft.rssi} 
@@ -142,4 +141,4 @@ function get_all_planes_and_save() {
 }
 
 //++++++++++++++++++++++++++++++++++++++++++
-setInterval(get_all_planes_and_save, POLLING_RATE_MILISECONDS);  // Infinite loop
+setInterval(get_all_planes_and_save, POLLING_RATE_MILISECONDS);  // infinite loop
