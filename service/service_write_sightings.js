@@ -59,7 +59,7 @@ function insert_sighting(sighting) {
       '${aircraft.hex}',
       '${aircraft.flight}',
       ${sighting.now},
-      ${aircraft.alt_baro}, 
+      '${aircraft.alt_baro}', 
       ${aircraft.alt_geom}, 
       ${aircraft.gs}, 
       ${aircraft.track}, 
