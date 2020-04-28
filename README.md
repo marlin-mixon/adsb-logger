@@ -8,7 +8,7 @@ PREREQUISITES:
 
 1. Nodejs
 2. npm (for installing node packages)
-3. Node Packages: sqlite3
+3. Node Packages: sqlite3, fs
 4. Sqlite3
 
 INSTALLATION:
