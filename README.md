@@ -4,7 +4,14 @@ This is a single program that runs in an infinite loop, recording data from a du
 
 Possible issues: This code may need to be optimized to ensure all sightings are being recorded.  It currently runs every second and does NOT consider the history_n files.
 
-INSTALLATION
+PREREQUISITES:
+
+1. Nodejs
+2. npm (for installing node packages)
+3. Node Packages: sqlite3
+4. Sqlite3
+
+INSTALLATION:
 
 1. Expand the source into the desired directory.
 
